@@ -20,6 +20,15 @@ test('bem-cx', (t) => {
     elAt(2, 'F', 'Root__E__F');
     elAt(3, 'G', 'Root__E__F__G');
 
+    t.comment('makeRelative');
+    cxs.elAt(1, '2A');
+    cxs.elAt(2, '2B');
+    cxs.elAt(3, '2C');
+    t.equal(
+      String(cxs.makeRelative().elAt(1, '2D')),
+      'Root__2A__2B__2C__2D'
+    );
+
     end();
   });
 
@@ -32,7 +41,10 @@ test('bem-cx', (t) => {
     }
 
     elAt(1, 'Foo', 'Root__Foo');
+    const original = console.warn;
+    console.warn = function(){};
     elAt(3, 'Bar', 'Root__Foo__Bar');
+    console.warn = original;
     elAt(2, 'Baz', 'Root__Foo__Baz');
 
     end();
@@ -72,3 +84,5 @@ function getTest(t) {
     }
   }
 }
+
+process.exit(0);

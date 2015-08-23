@@ -26,6 +26,7 @@ class CxStack {
     const change = level - this.level;
     if (process.env.DEBUG) {
       console.error({
+        args: args,
         levelFrom: this.level,
         levelTo: level,
         change: change,
@@ -87,7 +88,10 @@ class CxStack {
         this.stack.pop();
       }
 
-      return this._getBem(0).el(...args);
+      const next = this._getBem(0).el(...args);
+      this.stack.push(next);
+      this.level++;
+      return next;
     }
   }
 
@@ -119,7 +123,7 @@ class CxStack {
 
   **/
   makeRelative(el=undefined){
-    const it = new CxStack(this._getBem(0).toString());
+    const it = new CxStack(this.toString());
     return it;
   }
 

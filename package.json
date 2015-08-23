@@ -6,7 +6,7 @@
   "scripts": {
     "prepublish": "babel src -d lib && npm run docs",
     "docs": "babel-node scripts/docs.js",
-    "test": "babel-tape-runner test/*.js"
+    "test": "babel-node $(npm bin)/tape test/*.js"
   },
   "repository": {
     "type": "git",
