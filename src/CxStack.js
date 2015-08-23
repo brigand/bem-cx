@@ -73,8 +73,10 @@ class CxStack {
       // note: this is the one place we use non-zero offset
       // if `change` is 0 then it's a sibling
       const bem = this._getBem(-1);
-
       const next = bem.el(...args);
+
+      // replace the top item
+      this.stack[this.stack.length - 1] = next;
       return next;
     }
 

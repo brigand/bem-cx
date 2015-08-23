@@ -12,17 +12,16 @@ test('bem-cx', (t) => {
     }
 
     eq(cxs, 'Root');
-    elAt(1, 'Foo', 'Root__Foo');
-    elAt(2, 'Bar', 'Root__Foo__Bar');
-    elAt(1, 'Baz', 'Root__Baz');
-    elAt(1, 'Foo', 'Root__Foo');
-    elAt(1, 'Foo', 'Root__Foo');
-    elAt(2, 'Bar', 'Root__Foo__Bar');
-    elAt(3, 'Baz', 'Root__Foo__Bar__Baz');
+    elAt(1, 'A', 'Root__A');
+    elAt(2, 'B', 'Root__A__B');
+    elAt(1, 'C', 'Root__C');
+    elAt(1, 'D', 'Root__D');
+    elAt(1, 'E', 'Root__E');
+    elAt(2, 'F', 'Root__E__F');
+    elAt(3, 'G', 'Root__E__F__G');
 
     end();
   });
-
 
   t.test('skip', (t) => {
     const {eq, cxs, end} = getTest(t);
