@@ -21,9 +21,7 @@ class CxStack {
     The first call to this should pass `1` as the level.
 
     `args` are passed to bem.el. Returns a BemElement.
-
   **/
-
   elAt(level, ...args){
     const change = level - this.level;
     if (process.env.DEBUG) {
@@ -104,6 +102,7 @@ class CxStack {
   /**
   Creates a version of this stack with the current block path as the root.
 
+  ```js
   render(){
     return (
       <div className={cxs.elAt(1, 'Foo')}>
@@ -114,6 +113,7 @@ class CxStack {
   renderItem(){
     String(cxs.elAt(1, 'Baz')) === 'Foo__Bar__Baz';
   }
+  ```
 
   **/
   makeRelative(el=undefined){
